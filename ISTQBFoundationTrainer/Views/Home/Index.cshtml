@@ -1,0 +1,25 @@
+﻿@using ISTQBFoundationTrainer.Models
+@model ISTQBFoundationTrainer.Models.TrainingDataModel
+@{
+    ViewBag.Title = "ISTQB Exam Trainer";
+}
+
+<div class="jumbotron">
+    <h3>Вопрос № @Model.Question.Id</h3>
+    <p class="lead">
+        @(Model.Language == Language.Russian ? Model.Question.RussianText :Model.Question.EnglishText)
+    </p>
+    <div>
+        @foreach (var answer in Model.Question.Answers)
+        {
+            <div>
+                <label class="answer hover-gray" for=@answer.Id>
+                    <input type="radio" name="answers" id=@answer.Id />
+                    @answer.EnglishText
+                </label>
+            </div>
+        }
+    </div>
+
+<p><div class="btn btn-primary btn-lg">Проверить &raquo;</div></p>
+</div>
